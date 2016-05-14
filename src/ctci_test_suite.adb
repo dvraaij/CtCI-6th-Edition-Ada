@@ -9,12 +9,14 @@ package body CtCI_Test_Suite is
    Result : aliased Test_Suite;
 
    --  Statically allocate test cases:
-   Test_1 : aliased Chapter_1_Tests.Test_Case;
+   --Test_1 : aliased Chapter_1_Tests.Test_Case;
+   Test_2 : aliased Chapter_2_Tests.Test_Case;
 
    function Suite return Access_Test_Suite is
    begin
 
-      Add_Test (Result'Access, Test_1'Access);
+      --Add_Test (Result'Access, Test_1'Access);
+      Add_Test (Result'Access, Test_2'Access);
 
       return Result'Access;
 

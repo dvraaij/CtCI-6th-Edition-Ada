@@ -8,8 +8,11 @@ project CtCI is
    for Main use ("main.adb");
 
    package Compiler is
-      for Default_Switches ("ada") use ("-g");
+      for Default_Switches ("ada") use ("-g", "-gnatf");
    end Compiler;
+
+   package Pretty_Printer is
+   end Pretty_Printer;
 
 end CtCI;
 
