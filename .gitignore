@@ -1,0 +1,12 @@
+# Build / Exec dir
+obj/
+bin/
+
+# Ada library information
+*.ali
+
+# Ada pretty printer
+*.npp
+
+# Other
+*.tar
