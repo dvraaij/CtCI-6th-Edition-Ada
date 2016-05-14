@@ -2,7 +2,8 @@
 with AUnit.Test_Cases; use AUnit.Test_Cases;
 
 -- Exercises
-with Ex_2_1_Remove_Dubs; use Ex_2_1_Remove_Dubs;
+with Ex_2_1_Remove_Dubs;        use Ex_2_1_Remove_Dubs;
+with Ex_2_2_Return_Kth_To_Last; use Ex_2_2_Return_Kth_To_Last;
 
 package body Chapter_2_Tests is
 
@@ -20,6 +21,10 @@ package body Chapter_2_Tests is
         (Test    => T,
          Routine => Test_Remove_Dups1'Access,
          Name    => "2.1 : Remove_Dups2");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Return_Kth_To_Last'Access,
+         Name    => "2.2 : Return_Kth_To_Last");
 
    end Register_Tests;
 
