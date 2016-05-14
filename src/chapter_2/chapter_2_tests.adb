@@ -4,6 +4,7 @@ with AUnit.Test_Cases; use AUnit.Test_Cases;
 -- Exercises
 with Ex_2_1_Remove_Dubs;        use Ex_2_1_Remove_Dubs;
 with Ex_2_2_Return_Kth_To_Last; use Ex_2_2_Return_Kth_To_Last;
+with Ex_2_3_Delete_Middle_Node; use Ex_2_3_Delete_Middle_Node;
 
 package body Chapter_2_Tests is
 
@@ -25,6 +26,10 @@ package body Chapter_2_Tests is
         (Test    => T,
          Routine => Test_Return_Kth_To_Last'Access,
          Name    => "2.2 : Return_Kth_To_Last");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Delete_Middle_Node'Access,
+         Name    => "2.3 : Delete_Middle_Node");
 
    end Register_Tests;
 
