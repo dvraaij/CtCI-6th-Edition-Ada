@@ -5,14 +5,15 @@ with Ada.Containers;   use Ada.Containers;
 
 package body Ex_2_5_Sum_Lists is
 
-   -- NOTE: Recursion is an interesting approach, but it should be used with
-   --       great care such that stack does not blow. Recursion should
-   --       typically be replaced by iteration which is in general more safe
-   --       and quite often more easy to understand,
 
-   -------------------
-   -- List_To_Value --
-   -------------------
+   --  +------------------+--------------+-----------+
+   --  | Function         | Order digits | Method    |
+   --  +------------------+--------------+-----------+
+   --  | List_To_Value_B1 | Backward     | Iteration |
+   --  | List_To_Value_B2 | Backward     | Recursion |
+   --  | List_To_Value_F1 | Forward      | Iteration |
+   --  | List_To_Value_F2 | Forward      | Recursion |
+   --  +------------------+--------------+-----------+
 
    -- Backward iteration
    function List_To_Value_B1 (LL : List) return Natural is
@@ -68,9 +69,12 @@ package body Ex_2_5_Sum_Lists is
       return Recurse (LL.Last);
    end List_To_Value_F2;
 
-   -------------------
-   -- Value_To_List --
-   -------------------
+   --  +-----------------+--------------+-----------+
+   --  | Function        | Order digits | Method    |
+   --  +-----------------+--------------+-----------+
+   --  | Value_To_List_B | Backward     | Iteration |
+   --  | Value_To_List_F | Forward      | Iteration |
+   --  +-----------------+--------------+-----------+
 
    function Value_To_List_B (V : Natural) return List is
 
