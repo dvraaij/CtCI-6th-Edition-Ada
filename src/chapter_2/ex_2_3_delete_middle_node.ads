@@ -6,14 +6,16 @@ with Ada.Unchecked_Deallocation;
 package Ex_2_3_Delete_Middle_Node is
 
    --------------------------------------
-   -- Types for buidling a linked-list --
+   -- Types for building a linked-list --
    --------------------------------------
 
    -- NOTE: Using a custom defined linked-list instead of the linked-list
    --       container from the Ada standard library. Solution cannot be shown
    --       with the linked-list container type as pointer manipulation
    --       (i.e. manipulation of the "Next" field) is (for good reasons)
-   --       hidden from the end-user in the container packages.
+   --       hidden from the end-user in the container packages. See also the
+   --       note in the body file on the problems in using such a naive
+   --       implementation.
 
    type Node;
    type Node_Ptr is access Node;

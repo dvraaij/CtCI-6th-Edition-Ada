@@ -41,7 +41,7 @@ package body Ex_2_3_Delete_Middle_Node is
 
    procedure Test_Delete_Middle_Node (T : in out Test_Cases.Test_Case'Class) is
 
-      -- A very simple singly linkes-list
+      -- A very simple singly linked-list
       Node6_Ptr : Node_Ptr := new Node'(null, 'f');
       Node5_Ptr : Node_Ptr := new Node'(Node6_Ptr, 'e');
       Node4_Ptr : Node_Ptr := new Node'(Node5_Ptr, 'd');
@@ -67,9 +67,22 @@ package body Ex_2_3_Delete_Middle_Node is
            List_Ptr.Next.Next.Next.Next.Element = 'f',
          Message => "Test1 failed");
 
-      -- Deallocate teach node
+      -- Deallocate each node
+
+      -- NOTE: Node5_Ptr is already deallocated in "Delete_Middle_Node".
+      --       Calling dispose again would cause a "double free".
+
+      --       The trickery involved here shows the danger of using a
+      --       quick & dirty, but also very naive implementation of a
+      --       linked-list and subsequent use of "Ada.Unchecked_Deallocation".
+      --       It is better to use implement some kind of reference counting
+      --       scheme as proposed e.g. here:
+      --
+      --          http://www.adacore.com/adaanswers/gems/
+      --                               gem-97-reference-counting-in-ada-part-1/
+
       Dispose (Node6_Ptr);
-      Dispose (Node5_Ptr);
+    --Dispose (Node5_Ptr);
       Dispose (Node4_Ptr);
       Dispose (Node3_Ptr);
       Dispose (Node2_Ptr);
