@@ -1,7 +1,7 @@
-with AUnit.Assertions; use AUnit.Assertions;
-with AUnit.Test_Cases; use AUnit.Test_Cases;
-with Ada.Text_IO;      use Ada.Text_IO;
-with Ada.Containers;   use Ada.Containers;
+with AUnit.Assertions;      use AUnit.Assertions;
+with AUnit.Test_Cases;      use AUnit.Test_Cases;
+with Ada.Text_IO;           use Ada.Text_IO;
+with CtCI.Linked_List_Node; use CtCI.Linked_List_Node;
 
 package body Ex_2_3_Delete_Middle_Node is
 
@@ -12,10 +12,7 @@ package body Ex_2_3_Delete_Middle_Node is
    --    Space complexity : O(1)                                             --
    ----------------------------------------------------------------------------
 
-   procedure Delete_Middle_Node (N : in out Node) is
-
-      N_Next : Node_Ptr;
-
+   procedure Delete_Middle_Node (N : aliased in out Node) is
    begin
 
       -- Input checking
@@ -23,15 +20,9 @@ package body Ex_2_3_Delete_Middle_Node is
          raise Constraint_Error;
       end if;
 
-      -- Node subsequent to the given node
-      N_Next := N.Next;
-
       -- Copy content of subsequent node to the given node
-      N.Next    := N_Next.Next;
-      N.Element := N_Next.Element;
-
-      -- Deallocate subsequent node
-      Dispose (N_Next);
+      N.Data :=    N.Next.Data;
+      Set_Next (N, N.Next.Next.all);
 
    end Delete_Middle_Node;
 
@@ -41,52 +32,27 @@ package body Ex_2_3_Delete_Middle_Node is
 
    procedure Test_Delete_Middle_Node (T : in out Test_Cases.Test_Case'Class) is
 
-      -- A very simple singly linked-list
-      Node6_Ptr : Node_Ptr := new Node'(null, 'f');
-      Node5_Ptr : Node_Ptr := new Node'(Node6_Ptr, 'e');
-      Node4_Ptr : Node_Ptr := new Node'(Node5_Ptr, 'd');
-      Node3_Ptr : Node_Ptr := new Node'(Node4_Ptr, 'c');
-      Node2_Ptr : Node_Ptr := new Node'(Node3_Ptr, 'b');
-      Node1_Ptr : Node_Ptr := new Node'(Node2_Ptr, 'a');
-
-      -- Pointer to the head (first node) of the list
-      List_Ptr : Node_Ptr := Node1_Ptr;
+      Node6 : aliased Node := Linked_List_Node (6);
+      Node5 : aliased Node := Linked_List_Node (5, Node6);
+      Node4 : aliased Node := Linked_List_Node (4, Node5);
+      Node3 : aliased Node := Linked_List_Node (3, Node4);
+      Node2 : aliased Node := Linked_List_Node (2, Node3);
+      Node1 : aliased Node := Linked_List_Node (1, Node2);
 
    begin
 
-      -- Delete the given node (with character 'd')
-      Delete_Middle_Node (Node4_Ptr.all);
+      -- Delete the given node
+      Delete_Middle_Node (Node4);
 
       -- Verify that the node has been removed from the list
       Assert
         (Condition =>
-           List_Ptr.Element = 'a' and
-           List_Ptr.Next.Element = 'b' and
-           List_Ptr.Next.Next.Element = 'c' and
-           List_Ptr.Next.Next.Next.Element = 'e' and
-           List_Ptr.Next.Next.Next.Next.Element = 'f',
+           Node1.Data = 1 and
+           Node1.Next.Data = 2 and
+           Node1.Next.Next.Data = 3 and
+           Node1.Next.Next.Next.Data = 5 and
+           Node1.Next.Next.Next.Next.Data = 6,
          Message => "Test1 failed");
-
-      -- Deallocate each node
-
-      -- NOTE: Node5_Ptr is already deallocated in "Delete_Middle_Node".
-      --       Calling dispose again would cause a "double free".
-
-      --       The trickery involved here shows the danger of using a
-      --       quick & dirty, but also very naive implementation of a
-      --       linked-list and subsequent use of "Ada.Unchecked_Deallocation".
-      --       It is better to use implement some kind of reference counting
-      --       scheme as proposed e.g. here:
-      --
-      --          http://www.adacore.com/adaanswers/gems/
-      --                               gem-97-reference-counting-in-ada-part-1/
-
-      Dispose (Node6_Ptr);
-    --Dispose (Node5_Ptr);
-      Dispose (Node4_Ptr);
-      Dispose (Node3_Ptr);
-      Dispose (Node2_Ptr);
-      Dispose (Node1_Ptr);
 
    end Test_Delete_Middle_Node;
 
