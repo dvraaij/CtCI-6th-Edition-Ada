@@ -14,7 +14,7 @@ package body Ex_2_4_Partition is
    procedure Partition (LL : in out List; Threshold : Natural) is
 
       C      : Cursor := LL.First;
-      C_Next : Cursor := LL_Natural.Next (C);
+      C_Next : Cursor := Next (C);
 
    begin
 
@@ -28,7 +28,7 @@ package body Ex_2_4_Partition is
 
          -- Store subsequent node as current cursor position is lost after
          -- splicing.
-         C_Next := LL_Natural.Next (C);
+         C_Next := Next (C);
 
          -- Prepend node to the head of the list if the element value is
          -- smaller than the threshold.
