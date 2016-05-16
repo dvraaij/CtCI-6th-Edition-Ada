@@ -7,6 +7,7 @@ with Ex_2_2_Return_Kth_To_Last; use Ex_2_2_Return_Kth_To_Last;
 with Ex_2_3_Delete_Middle_Node; use Ex_2_3_Delete_Middle_Node;
 with Ex_2_4_Partition;          use Ex_2_4_Partition;
 with Ex_2_5_Sum_Lists;          use Ex_2_5_Sum_Lists;
+with Ex_2_6_Palindrome;         use Ex_2_6_Palindrome;
 
 package body Chapter_2_Tests is
 
@@ -44,6 +45,10 @@ package body Chapter_2_Tests is
         (Test    => T,
          Routine => Test_Sum_Lists2'Access,
          Name    => "2.5 : Sum_Lists2");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Palindrome'Access,
+         Name    => "2.6 : Palindrome");
 
    end Register_Tests;
 
