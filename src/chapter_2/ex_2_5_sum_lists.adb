@@ -28,17 +28,17 @@ package body Ex_2_5_Sum_Lists is
    function List_To_Value_B2 (LL : List) return Natural is
 
       -- Recursion function
-      function Next (C : Cursor) return Natural is
+      function Recurse (C : Cursor) return Natural is
       begin
          if C = No_Element then
             return 0;
          else
-            return LL (C) + 10 * Next (LL_Natural.Next(C));
+            return LL (C) + 10 * Recurse (Next(C));
          end if;
-      end Next;
+      end Recurse;
 
    begin
-      return Next (LL.First);
+      return Recurse (LL.First);
    end List_To_Value_B2;
 
    -- Forward iteration
@@ -55,17 +55,17 @@ package body Ex_2_5_Sum_Lists is
    function List_To_Value_F2 (LL : List) return Natural is
 
       -- Recursion function
-      function Previous (C : Cursor) return Natural is
+      function Recurse (C : Cursor) return Natural is
       begin
          if C = No_Element then
             return 0;
          else
-            return LL (C) + 10 * Previous (LL_Natural.Previous(C));
+            return LL (C) + 10 * Recurse (Previous(C));
          end if;
-      end Previous;
+      end Recurse;
 
    begin
-      return Previous (LL.Last);
+      return Recurse (LL.Last);
    end List_To_Value_F2;
 
    -------------------
