@@ -36,6 +36,14 @@ package body Chapter_2_Tests is
         (Test    => T,
          Routine => Test_Partition'Access,
          Name    => "2.4 : Partition");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Sum_Lists1'Access,
+         Name    => "2.5 : Sum_Lists1");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Sum_Lists2'Access,
+         Name    => "2.5 : Sum_Lists2");
 
    end Register_Tests;
 
