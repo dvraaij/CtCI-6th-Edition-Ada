@@ -8,6 +8,7 @@ with Ex_2_3_Delete_Middle_Node; use Ex_2_3_Delete_Middle_Node;
 with Ex_2_4_Partition;          use Ex_2_4_Partition;
 with Ex_2_5_Sum_Lists;          use Ex_2_5_Sum_Lists;
 with Ex_2_6_Palindrome;         use Ex_2_6_Palindrome;
+with Ex_2_7_Intersection;       use Ex_2_7_Intersection;
 
 package body Chapter_2_Tests is
 
@@ -49,6 +50,14 @@ package body Chapter_2_Tests is
         (Test    => T,
          Routine => Test_Palindrome'Access,
          Name    => "2.6 : Palindrome");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Intersection1'Access,
+         Name    => "2.7 : Intersection1");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Intersection2'Access,
+         Name    => "2.7 : Intersection2");
 
    end Register_Tests;
 
