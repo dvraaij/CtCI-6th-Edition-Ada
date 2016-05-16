@@ -5,6 +5,8 @@ with AUnit.Test_Cases; use AUnit.Test_Cases;
 with Ex_2_1_Remove_Dubs;        use Ex_2_1_Remove_Dubs;
 with Ex_2_2_Return_Kth_To_Last; use Ex_2_2_Return_Kth_To_Last;
 with Ex_2_3_Delete_Middle_Node; use Ex_2_3_Delete_Middle_Node;
+with Ex_2_4_Partition;          use Ex_2_4_Partition;
+with Ex_2_5_Sum_Lists;          use Ex_2_5_Sum_Lists;
 
 package body Chapter_2_Tests is
 
@@ -30,6 +32,10 @@ package body Chapter_2_Tests is
         (Test    => T,
          Routine => Test_Delete_Middle_Node'Access,
          Name    => "2.3 : Delete_Middle_Node");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Partition'Access,
+         Name    => "2.4 : Partition");
 
    end Register_Tests;
 
