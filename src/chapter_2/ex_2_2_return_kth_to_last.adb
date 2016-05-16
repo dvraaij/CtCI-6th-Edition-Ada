@@ -44,13 +44,13 @@ package body Ex_2_2_Return_Kth_To_Last is
          if Lag = Offset_to_Last then
 
             -- Increment both
-            LL_String.Next (C1);
-            LL_String.Next (C2);
+            Next (C1);
+            Next (C2);
 
          else
 
             -- Increment only C1 and count lag
-            LL_String.Next (C1);
+            Next (C1);
             Lag := Lag + 1;
 
          end if;
