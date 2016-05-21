@@ -8,8 +8,8 @@ package Ex_2_7_Intersection is
    -- Algorithm --
    ---------------
 
-   function Intersection1 (LL1, LL2 : aliased in out Node) return access Node;
-   function Intersection2 (LL1, LL2 : aliased in out Node) return access Node;
+   function Intersection1 (LL1, LL2 : Node_Access) return Node_Access;
+   function Intersection2 (LL1, LL2 : Node_Access) return Node_Access;
 
    ----------------
    -- Test cases --

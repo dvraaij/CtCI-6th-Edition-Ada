@@ -8,7 +8,7 @@ package Ex_2_3_Delete_Middle_Node is
    -- Algorithm --
    ---------------
 
-   procedure Delete_Middle_Node (N: aliased in out Node);
+   procedure Delete_Middle_Node (N : Node_Access);
 
    ----------------
    -- Test cases --

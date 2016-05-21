@@ -17,48 +17,72 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
+with Ada.Unchecked_Deallocation;
+
 package CtCI.Linked_List_Node is
-   pragma Pure;
+
+   type Node;
+   type Node_Access is access Node;
 
    type Node is
       record
-         Next : access Node;
-         Prev : access Node;
-         Last : access Node;
+         Next : Node_Access;
+         Prev : Node_Access;
+         Last : Node_Access;
          Data : Integer;
       end record;
+
+   -- Additional type to easily handle linked-lists during testing.
+   type Nodes is array (Positive range <>) of Node_Access;
 
    -----------------------
    -- Factory functions --
    -----------------------
 
-   function Linked_List_Node return Node;
+   function Linked_List_Node return Node_Access;
 
    function Linked_List_Node
-     (Data : Integer) return Node;
-
-    function Linked_List_Node
-     (Data : Integer;
-      Next : aliased in out Node) return Node;
+     (Data : Integer) return Node_Access;
 
    function Linked_List_Node
      (Data : Integer;
-      Next : aliased in out Node;
-      Prev : aliased in out Node) return Node;
+      Next : Node_Access) return Node_Access;
+
+   function Linked_List_Node
+     (Data : Integer;
+      Next : Node_Access;
+      Prev : Node_Access) return Node_Access;
+
+   -- Additional function to easily generate linked-lists during testing.
+   function Linked_List
+     (N : Positive) return Nodes;
+
+   -----------------------
+   -- Dispose functions --
+   -----------------------
+
+   procedure Dispose is new Ada.Unchecked_Deallocation
+     (Object => Node, Name => Node_Access);
+
+    procedure Dispose
+     (L : in out Nodes);
 
    -----------------------
    -- Utility functions --
    -----------------------
 
    procedure Set_Next
-     (This : aliased in out Node;
-      Next : aliased in out Node);
+     (This : Node_Access;
+      Next : Node_Access);
 
    procedure Set_Previous
-     (This : aliased in out Node;
-      Prev : aliased in out Node);
+     (This : Node_Access;
+      Prev : Node_Access);
 
    function Print_Forward
-     (This : Node) return String;
+     (This : Node_Access) return String;
+
+   function Clone
+     (This : Node_Access) return Node_Access;
 
 end CtCI.Linked_List_Node;
