@@ -9,6 +9,7 @@ with Ex_2_4_Partition;          use Ex_2_4_Partition;
 with Ex_2_5_Sum_Lists;          use Ex_2_5_Sum_Lists;
 with Ex_2_6_Palindrome;         use Ex_2_6_Palindrome;
 with Ex_2_7_Intersection;       use Ex_2_7_Intersection;
+with Ex_2_8_Loop_Detection;     use Ex_2_8_Loop_Detection;
 
 package body Chapter_2_Tests is
 
@@ -58,6 +59,10 @@ package body Chapter_2_Tests is
         (Test    => T,
          Routine => Test_Intersection2'Access,
          Name    => "2.7 : Intersection2");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Loop_Detection'Access,
+         Name    => "2.8 : Loop_Detection");
 
    end Register_Tests;
 
