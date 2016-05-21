@@ -85,15 +85,15 @@ package body Ex_1_2_Check_Permutation is
    ----------------
 
    procedure Run_Test_Cases
-     (Fcn_Ptr : access function (S1, S2 : String) return Boolean)
+     (Fcn_Access : access function (S1, S2 : String) return Boolean)
    is
    begin
 
-      Assert (Fcn_Ptr (""       , "a"      ) = False, "Test 1 Failed");
-      Assert (Fcn_Ptr ("a"      , "ab"     ) = False, "Test 2 Failed");
-      Assert (Fcn_Ptr ("aaaaaab", "baaaaaa") = True , "Test 3 Failed");
-      Assert (Fcn_Ptr ("abcdefg", "cgfebad") = True , "Test 4 Failed");
-      Assert (Fcn_Ptr ("abcdefg", "abcdffg") = False, "Test 5 Failed");
+      Assert (Fcn_Access (""       , "a"      ) = False, "Test 1 Failed");
+      Assert (Fcn_Access ("a"      , "ab"     ) = False, "Test 2 Failed");
+      Assert (Fcn_Access ("aaaaaab", "baaaaaa") = True , "Test 3 Failed");
+      Assert (Fcn_Access ("abcdefg", "cgfebad") = True , "Test 4 Failed");
+      Assert (Fcn_Access ("abcdefg", "abcdffg") = False, "Test 5 Failed");
 
    end Run_Test_Cases;
 

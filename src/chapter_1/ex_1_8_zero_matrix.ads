@@ -12,18 +12,18 @@ package Ex_1_8_Zero_Matrix is
    type Matrix is
      array (Positive range <>, Positive range <>) of aliased Integer;
 
-   type Matrix_Ptr is access Matrix;
+   type Matrix_Access is access Matrix;
 
    procedure Dispose is new Ada.Unchecked_Deallocation
      (Object => Matrix,
-      Name   => Matrix_Ptr);
+      Name   => Matrix_Access);
 
    ----------------
    -- Algorithms --
    ----------------
 
-   procedure Zero_Matrix1 (M_Ptr : not null Matrix_Ptr);
-   procedure Zero_Matrix2 (M_Ptr : not null Matrix_Ptr);
+   procedure Zero_Matrix1 (M_Access : not null Matrix_Access);
+   procedure Zero_Matrix2 (M_Access : not null Matrix_Access);
 
    ----------------
    -- Test cases --

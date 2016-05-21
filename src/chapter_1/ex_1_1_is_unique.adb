@@ -79,16 +79,16 @@ package body Ex_1_1_Is_Unique is
    ----------------
 
    procedure Run_Test_Cases
-     (Fcn_Ptr : access function (S : String) return Boolean)
+     (Fcn_Access : access function (S : String) return Boolean)
    is
    begin
-      Assert (Fcn_Ptr (""       ) = False, "Test 1 Failed");
-      Assert (Fcn_Ptr ("a"      ) = True , "Test 2 Failed");
-      Assert (Fcn_Ptr ("abcdefg") = True , "Test 3 Failed");
-      Assert (Fcn_Ptr ("abcdffg") = False, "Test 4 Failed");
-      Assert (Fcn_Ptr ("abcdebg") = False, "Test 5 Failed");
-      Assert (Fcn_Ptr ("aacdefg") = False, "Test 6 Failed");
-      Assert (Fcn_Ptr ("abcdegg") = False, "Test 7 Failed");
+      Assert (Fcn_Access (""       ) = False, "Test 1 Failed");
+      Assert (Fcn_Access ("a"      ) = True , "Test 2 Failed");
+      Assert (Fcn_Access ("abcdefg") = True , "Test 3 Failed");
+      Assert (Fcn_Access ("abcdffg") = False, "Test 4 Failed");
+      Assert (Fcn_Access ("abcdebg") = False, "Test 5 Failed");
+      Assert (Fcn_Access ("aacdefg") = False, "Test 6 Failed");
+      Assert (Fcn_Access ("abcdegg") = False, "Test 7 Failed");
    end Run_Test_Cases;
 
    procedure Test_Is_Unique1 (T : in out Test_Cases.Test_Case'Class) is

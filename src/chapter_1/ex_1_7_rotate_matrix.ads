@@ -12,17 +12,17 @@ package Ex_1_7_Rotate_Matrix is
    type Matrix is
      array (Positive range <>, Positive range <>) of aliased Integer;
 
-   type Matrix_Ptr is access Matrix;
+   type Matrix_Access is access Matrix;
 
    procedure Dispose is new Ada.Unchecked_Deallocation
      (Object => Matrix,
-      Name   => Matrix_Ptr);
+      Name   => Matrix_Access);
 
    ----------------
    -- Algorithms --
    ----------------
 
-   procedure Rotate_Matrix (M_Ptr : not null Matrix_Ptr);
+   procedure Rotate_Matrix (M_Access : not null Matrix_Access);
 
    ----------------
    -- Test cases --

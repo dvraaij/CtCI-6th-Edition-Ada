@@ -8,12 +8,12 @@ package body Ex_1_7_Rotate_Matrix is
    -- Print matrix --
    ------------------
 
-   procedure Put_Matrix (M_Ptr : not null Matrix_Ptr) is
+   procedure Put_Matrix (M_Access : not null Matrix_Access) is
    begin
 
-      for p in M_Ptr'Range(1) loop
-         for q in M_Ptr'Range(2) loop
-            Put ( Integer'Image (M_Ptr (p,q)) );
+      for p in M_Access'Range(1) loop
+         for q in M_Access'Range(2) loop
+            Put ( Integer'Image (M_Access (p,q)) );
          end loop;
          New_Line;
       end loop;
@@ -28,32 +28,32 @@ package body Ex_1_7_Rotate_Matrix is
    --    Space complexity : O(1)                                             --
    ----------------------------------------------------------------------------
 
-   procedure Rotate_Matrix (M_Ptr : not null Matrix_Ptr) is
+   procedure Rotate_Matrix (M_Access : not null Matrix_Access) is
 
       -- Mappings
       function Top (Layer, Index : Natural) return access Integer is
-        (M_Ptr ( M_Ptr'First(1) + Layer ,
-                 M_Ptr'First(2) + Index )'Access)
+        (M_Access ( M_Access'First(1) + Layer ,
+                 M_Access'First(2) + Index )'Access)
         with Inline;
 
       function Right (Layer, Index : Natural) return access Integer is
-        (M_Ptr ( M_Ptr'First(1) + Index ,
-                 M_Ptr'Last (2) - Layer )'Access)
+        (M_Access ( M_Access'First(1) + Index ,
+                 M_Access'Last (2) - Layer )'Access)
         with Inline;
 
       function Bottom (Layer, Index : Natural) return access Integer is
-        (M_Ptr ( M_Ptr'Last (1) - Layer ,
-                 M_Ptr'Last (2) - Index )'Access)
+        (M_Access ( M_Access'Last (1) - Layer ,
+                 M_Access'Last (2) - Index )'Access)
         with Inline;
 
       function Left (Layer, Index : Natural) return access Integer is
-        (M_Ptr ( M_Ptr'Last (1) - Index ,
-                 M_Ptr'First(2) + Layer )'Access)
+        (M_Access ( M_Access'Last (1) - Index ,
+                 M_Access'First(2) + Layer )'Access)
         with Inline;
 
       -- Matrix dimensions
-      N : constant Positive := M_Ptr'Length(1);
-      M : constant Positive := M_Ptr'Length(2);
+      N : constant Positive := M_Access'Length(1);
+      M : constant Positive := M_Access'Length(2);
 
       -- Temporary variable used during swapping
       Temp : Integer;
@@ -89,9 +89,9 @@ package body Ex_1_7_Rotate_Matrix is
    procedure Test_Rotate_Matrix (T : in out Test_Cases.Test_Case'Class) is
 
       -- Allocate and initialize new matrices on the heap
-      M1_Ptr : Matrix_Ptr := new Matrix'(1..2 => ( 1, 2 ));
-      M2_Ptr : Matrix_Ptr := new Matrix'(1..4 => ( 1, 2, 3, 4 ));
-      M3_Ptr : Matrix_Ptr := new Matrix'(1..5 => ( 1, 2, 3, 4, 5 ));
+      M1_Access : Matrix_Access := new Matrix'(1..2 => ( 1, 2 ));
+      M2_Access : Matrix_Access := new Matrix'(1..4 => ( 1, 2, 3, 4 ));
+      M3_Access : Matrix_Access := new Matrix'(1..5 => ( 1, 2, 3, 4, 5 ));
 
       -- Expected results
       Result1 : constant Matrix :=
@@ -114,19 +114,19 @@ package body Ex_1_7_Rotate_Matrix is
    begin
 
       -- Perform rotation
-      Rotate_Matrix ( M1_Ptr );
-      Rotate_Matrix ( M2_Ptr );
-      Rotate_Matrix ( M3_Ptr );
+      Rotate_Matrix ( M1_Access );
+      Rotate_Matrix ( M2_Access );
+      Rotate_Matrix ( M3_Access );
 
       -- Verify result
-      Assert ( M1_Ptr.all = Result1, "Test 1 failed" );
-      Assert ( M2_Ptr.all = Result2, "Test 2 failed" );
-      Assert ( M3_Ptr.all = Result3, "Test 3 failed" );
+      Assert ( M1_Access.all = Result1, "Test 1 failed" );
+      Assert ( M2_Access.all = Result2, "Test 2 failed" );
+      Assert ( M3_Access.all = Result3, "Test 3 failed" );
 
       -- Deallocate matrices
-      Dispose ( M1_Ptr );
-      Dispose ( M2_Ptr );
-      Dispose ( M3_Ptr );
+      Dispose ( M1_Access );
+      Dispose ( M2_Access );
+      Dispose ( M3_Access );
 
    end Test_Rotate_Matrix;
 

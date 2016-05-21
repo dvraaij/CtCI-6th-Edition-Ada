@@ -136,7 +136,7 @@ package body Ex_2_1_Remove_Dubs is
    ----------------
 
    procedure Run_Test_Cases
-     (Proc_Ptr : access procedure (LL : in out List)) is
+     (Proc_Access : access procedure (LL : in out List)) is
 
       List1   : List;
       List2   : List;
@@ -167,8 +167,8 @@ package body Ex_2_1_Remove_Dubs is
       Result2.Append ("Tokyo");
 
       -- Remove the duplicates
-      Proc_Ptr (List1);
-      Proc_Ptr (List2);
+      Proc_Access (List1);
+      Proc_Access (List2);
 
       -- Verify reuslt
       Assert (List1 = Result1, "Test 1 failed");
