@@ -46,10 +46,6 @@ package CtCI.Linked_List_Node is
 
    function Linked_List_Node
      (Data : Integer;
-      Next : Node_Access) return Node_Access;
-
-   function Linked_List_Node
-     (Data : Integer;
       Next : Node_Access;
       Prev : Node_Access) return Node_Access;
 

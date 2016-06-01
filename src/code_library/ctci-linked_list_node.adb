@@ -21,8 +21,7 @@ package body CtCI.Linked_List_Node is
 
    ---------------------
    -- Factory methods --
-   ---------------------
-
+   ----------------------------------------------------------------------------
    function Linked_List_Node return Node_Access is
    begin
       return N : Node_Access := new Node do
@@ -31,7 +30,7 @@ package body CtCI.Linked_List_Node is
       end return;
    end Linked_List_Node;
 
-
+   ----------------------------------------------------------------------------
    function Linked_List_Node
      (Data : Integer) return Node_Access
    is
@@ -42,20 +41,7 @@ package body CtCI.Linked_List_Node is
       end return;
    end Linked_List_Node;
 
-
-   function Linked_List_Node
-     (Data : Integer;
-      Next : Node_Access) return Node_Access
-   is
-   begin
-      return N : Node_Access := new Node do
-         N.Last := N;
-         N.Data := Data;
-         Set_Next (N, Next);
-      end return;
-   end Linked_List_Node;
-
-
+   ----------------------------------------------------------------------------
    function Linked_List_Node
      (Data : Integer;
       Next : Node_Access;
@@ -70,21 +56,20 @@ package body CtCI.Linked_List_Node is
       end return;
    end Linked_List_Node;
 
-
+   ----------------------------------------------------------------------------
    function Linked_List (N : Positive) return Nodes is
    begin
       return Result : Nodes (1 ..  N) do
          Result (N) :=  Linked_List_Node (N);
          for k in reverse 1 .. (N-1) loop
-            Result (k) := Linked_List_Node (k, Result (k+1));
+            Result (k) := Linked_List_Node (k, Result (k+1), null);
          end loop;
       end return;
    end Linked_List;
 
    -------------
    -- Methods --
-   -------------
-
+   ----------------------------------------------------------------------------
    procedure Dispose (L : in out Nodes) is
    begin
       for k in L'Range loop
@@ -92,7 +77,7 @@ package body CtCI.Linked_List_Node is
       end loop;
    end Dispose;
 
-
+   ----------------------------------------------------------------------------
    procedure Set_Next
      (This : Node_Access;
       Next : Node_Access)
@@ -109,7 +94,7 @@ package body CtCI.Linked_List_Node is
       end if;
    end Set_Next;
 
-
+   ----------------------------------------------------------------------------
    procedure Set_Previous
      (This : Node_Access;
       Prev : Node_Access)
@@ -121,7 +106,7 @@ package body CtCI.Linked_List_Node is
       end if;
    end Set_Previous;
 
-
+   ----------------------------------------------------------------------------
    function Print_Forward
      (This : Node_Access) return String
    is
@@ -134,7 +119,7 @@ package body CtCI.Linked_List_Node is
       end if;
    end Print_Forward;
 
-
+   ----------------------------------------------------------------------------
    function Clone
      (This : Node_Access) return Node_Access
    is
@@ -144,7 +129,7 @@ package body CtCI.Linked_List_Node is
          Next2 := Clone (This.Next);
       end if;
       return N : Node_Access do
-         N := Linked_List_Node (This.Data, Next2);
+         N := Linked_List_Node (This.Data, Next2, null);
       end return;
    end Clone;
 
