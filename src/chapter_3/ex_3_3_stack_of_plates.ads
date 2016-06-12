@@ -1,7 +1,7 @@
 with AUnit;            use AUnit;
 with AUnit.Test_Cases; use AUnit.Test_Cases;
 
-with CtCI.Bounded_Stack;
+private with CtCI.Bounded_Stack;
 
 package Ex_3_3_Stack_Of_Plates is
 

@@ -15,7 +15,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with CtCI.Stack;
+private with CtCI.Stack;
 
 generic
    type Element_Type is private;

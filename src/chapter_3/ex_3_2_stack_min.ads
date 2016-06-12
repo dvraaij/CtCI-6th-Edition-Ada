@@ -2,7 +2,7 @@ with AUnit;            use AUnit;
 with AUnit.Test_Cases; use AUnit.Test_Cases;
 with Ada.Containers;   use Ada.Containers;
 
-with Ada.Containers.Doubly_Linked_Lists;
+private with Ada.Containers.Doubly_Linked_Lists;
 
 package Ex_3_2_Stack_Min is
 

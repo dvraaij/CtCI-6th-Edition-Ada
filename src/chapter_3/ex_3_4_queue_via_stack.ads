@@ -1,7 +1,7 @@
 with AUnit;            use AUnit;
 with AUnit.Test_Cases; use AUnit.Test_Cases;
 
-with CtCI.Stack;
+private with CtCI.Stack;
 
 package Ex_3_4_Queue_Via_Stack is
 

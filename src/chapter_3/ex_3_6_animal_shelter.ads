@@ -1,8 +1,9 @@
 with AUnit;            use AUnit;
 with AUnit.Test_Cases; use AUnit.Test_Cases;
 
-with Ada.Containers.Doubly_Linked_Lists;
-with Ada.Strings.Bounded;
+        with Ada.Strings.Bounded;
+private with Ada.Containers.Doubly_Linked_Lists;
+
 
 package Ex_3_6_Animal_Shelter is
 
