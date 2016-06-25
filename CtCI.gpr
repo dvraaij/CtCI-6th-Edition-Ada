@@ -2,7 +2,7 @@ with "aunit";
 
 project CtCI is
 
-   for Source_Dirs use ("src", "src/chapter_1", "src/chapter_2", "src/chapter_3", "src/code_library");
+   for Source_Dirs use ("src/**");
    for Object_Dir use "obj";
    for Exec_Dir use "bin";
    for Main use ("main.adb");
