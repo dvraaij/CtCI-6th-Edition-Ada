@@ -10,7 +10,7 @@ with Ex_04_05_Validate_BST;          use Ex_04_05_Validate_BST;
 with Ex_04_06_Successor;             use Ex_04_06_Successor;
 
 with Ex_04_08_First_Common_Ancestor; use Ex_04_08_First_Common_Ancestor;
-
+with Ex_04_09_BST_Sequences;         use Ex_04_09_BST_Sequences;
 with Ex_04_10_Check_Subtree;         use Ex_04_10_Check_Subtree;
 
 package body Chapter_04_Tests is
