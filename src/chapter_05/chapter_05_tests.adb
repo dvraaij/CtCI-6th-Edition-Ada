@@ -9,6 +9,7 @@ with Ex_05_03_Flip_Bit_To_Win; use Ex_05_03_Flip_Bit_To_Win;
 with Ex_05_05_Debugger;        use Ex_05_05_Debugger;
 with Ex_05_06_Conversion;      use Ex_05_06_Conversion;
 with Ex_05_07_Pairwise_Swap;   use Ex_05_07_Pairwise_Swap;
+with Ex_05_08_Draw_Line;       use Ex_05_08_Draw_Line;
 
 package body Chapter_05_Tests is
 
@@ -40,6 +41,10 @@ package body Chapter_05_Tests is
         (Test    => T,
          Routine => Test_Pairwise_Swap'Access,
          Name    => "5.7 : Pairwise_Swap");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Draw_Line'Access,
+         Name    => "5.8 : Draw_Line");
 
    end Register_Tests;
 
