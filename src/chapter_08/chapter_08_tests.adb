@@ -4,6 +4,7 @@ with AUnit.Test_Cases; use AUnit.Test_Cases;
 -- Exercises
 with Ex_08_01_Triple_Step;     use Ex_08_01_Triple_Step;
 with Ex_08_02_Robot_In_A_Grid; use Ex_08_02_Robot_In_A_Grid;
+with Ex_08_03_Magic_Index;     use Ex_08_03_Magic_Index;
 
 package body Chapter_08_Tests is
 
@@ -21,6 +22,10 @@ package body Chapter_08_Tests is
         (Test    => T,
          Routine => Test_Robot_In_A_Grid'Access,
          Name    => "8.2 : Robot_In_A_Grid");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Magic_Index'Access,
+         Name    => "8.3 : Magic_Index");
 
    end Register_Tests;
 
