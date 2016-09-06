@@ -2,12 +2,13 @@
 with AUnit.Test_Cases; use AUnit.Test_Cases;
 
 -- Exercises
-with Ex_08_01_Triple_Step;        use Ex_08_01_Triple_Step;
-with Ex_08_02_Robot_In_A_Grid;    use Ex_08_02_Robot_In_A_Grid;
-with Ex_08_03_Magic_Index;        use Ex_08_03_Magic_Index;
-with Ex_08_04_Power_Set;          use Ex_08_04_Power_Set;
-with Ex_08_05_Recursive_Multiply; use Ex_08_05_Recursive_Multiply;
-with Ex_08_06_Towers_Of_Hanoi;    use Ex_08_06_Towers_Of_Hanoi;
+with Ex_08_01_Triple_Step;               use Ex_08_01_Triple_Step;
+with Ex_08_02_Robot_In_A_Grid;           use Ex_08_02_Robot_In_A_Grid;
+with Ex_08_03_Magic_Index;               use Ex_08_03_Magic_Index;
+with Ex_08_04_Power_Set;                 use Ex_08_04_Power_Set;
+with Ex_08_05_Recursive_Multiply;        use Ex_08_05_Recursive_Multiply;
+with Ex_08_06_Towers_Of_Hanoi;           use Ex_08_06_Towers_Of_Hanoi;
+with Ex_08_07_Permutations_Without_Dups; use Ex_08_07_Permutations_Without_Dups;
 
 package body Chapter_08_Tests is
 
@@ -41,6 +42,10 @@ package body Chapter_08_Tests is
         (Test    => T,
          Routine => Test_Towers_Of_Hanoi'Access,
          Name    => "8.6 : Tower_Of_Hanoi");
+      Register_Routine
+        (Test    => T,
+         Routine => Test_Permutations_Without_Dups'Access,
+         Name    => "8.7 : Permutations_Without_Dups");
 
    end Register_Tests;
 
